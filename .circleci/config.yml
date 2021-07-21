@@ -17,15 +17,19 @@ jobs:
     # CircleCI will report the results back to your VCS provider.
     steps:
       - checkout
+      - run: npm i
       - run: npm run lint
 
   test:
     <<: *node_version
     steps:
+      - checkout
+      - run: npm i
       - run: npm run test
   analyze:
     <<: *node_version
     steps:
+      - checkout
       - run: npm audit
 
 
